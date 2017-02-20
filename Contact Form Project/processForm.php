@@ -17,16 +17,26 @@ function formatHTMLMessage()
 {
     global $name, $email;
 
-    $confirmationMessage = "<p>Thank you $name for your message.  We will contact you at $email within 48 hours.</p>";
+    $confirmationMessage = "<p>Thank you for your message, $name.  We will contact you at $email within 48 hours.</p>";
 
     return $confirmationMessage;
 }
 
 function formatEmailMessage()
 {
-    global $name, $reason;
-    $emailMessage = "Thank you for your message, $name, regarding $reason.";
+    global $name, $email, $reason, $comment, $mailList, $moreInfo ;
+    $emailMessage = "Thank you for contacting us.  The details of your submission are below:\n\r";
+    $emailMessage .= "Message From: $name\n";
+    $emailMessage .= "Email: $email\n";
+    $emailMessage .= "Reason: $reason\n";
+    $emailMessage .= "Comment: $comment\n";
 
+    if(isset($mailList)){
+        $emailMessage .= "Additional request: $mailList\n";
+    }
+    if(isset($moreInfo)) {
+        $emailMessage .= "Additional request: $moreInfo\n";
+    }
     return $emailMessage;
 }
 
@@ -37,7 +47,7 @@ function sendEmailMessage()
     $to = $email;
     $from = "hello@williambarber.info";
     $subject = "Form Submission";
-    $message = formatHTMLMessage();
+    $message = wordwrap(formatEmailMessage());
     $header = "From: ".$from;
 
     if (mail($to, $subject, $message, $header))
@@ -54,8 +64,11 @@ function sendEmailMessage()
 <!DOCTYPE html>
 <html>
 <title>Form submission</title>
+<link rel="stylesheet" href="style/contactCSS.css">
 <body>
-    <?php sendEmailMessage(); ?>
+<div>
+    <p><?php sendEmailMessage(); ?></p>
+</div>
 </body>
 </html>
 
