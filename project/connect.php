@@ -8,8 +8,8 @@
 
 //connection info for xampp
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "wdv341";
+$password = "wdv341";
 $database= "wdv341";
 
 try {
