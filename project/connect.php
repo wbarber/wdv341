@@ -6,10 +6,11 @@
  * Time: 8:33 PM
  */
 
+//connection info for xampp
 $servername = "localhost";
-$username = "wbarber81_wdv341";
-$password = "password";
-$database= "wbarber81_wdv341";
+$username = "root";
+$password = "";
+$database= "wdv341";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
