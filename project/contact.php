@@ -19,13 +19,10 @@
 <body>
 <div class="container">
 
-    <form class="well form-horizontal" action="emailProcess.php" method="post"  id="contact_form">
+    <form class="well form-horizontal" action="emailProcess.php" onsubmit="return validateMyForm();"method="post"  id="contact_form">
 <fieldset>
 
-<!-- Form Name -->
 <legend>Contact Us</legend>
-
-<!-- Text input-->
 
 <div class="form-group">
   <label class="col-md-4 control-label">First Name</label>
@@ -37,8 +34,6 @@
   </div>
 </div>
 
-<!-- Text input-->
-
 <div class="form-group">
   <label class="col-md-4 control-label" >Last Name</label>
     <div class="col-md-4 inputGroupContainer">
@@ -49,7 +44,6 @@
   </div>
 </div>
 
-<!-- Text input-->
        <div class="form-group">
   <label class="col-md-4 control-label">E-Mail</label>
     <div class="col-md-4 inputGroupContainer">
@@ -60,9 +54,6 @@
   </div>
 </div>
 
-
-<!-- Text input-->
-
 <div class="form-group">
   <label class="col-md-4 control-label">Phone #</label>
     <div class="col-md-4 inputGroupContainer">
@@ -72,9 +63,6 @@
     </div>
   </div>
 </div>
-
-
-<!-- Text area -->
 
 <div class="form-group">
   <label class="col-md-4 control-label">Comments</label>
@@ -97,10 +85,40 @@
       <button type="reset" class="btn btn-success" >Clear <span class="glyphicon glyphicon-remove-circle"></span></button>
   </div>
 </div>
+    <div style="display:none;">
+   <label>Keep this field blank</label>
+   <input type="text" name="honeypot" id="honeypot" />
+</div>
 
 </fieldset>
 </form>
 
-    </div><!-- /.container -->
+<script type="text/javascript">
+	function validateMyForm() {
+		// The field is empty, submit the form.
+		if(!document.getElementById("honeypot").value) { 
+			return true;
+		} 
+		 // the field has a value it's a spam bot
+		else {
+			return false;
+		}
+	}
+</script>
+
+<script type="text/javascript">
+	function validateMyForm() {
+		// The field is empty, submit the form.
+		if(!document.getElementById("honeypot").value) { 
+			return true;
+		} 
+		 // the field has a value it's a spam bot
+		else {
+			return false;
+		}
+	}
+</script>
+
+    </div>
 </body>
 </html>
